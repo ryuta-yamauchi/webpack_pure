@@ -25,16 +25,13 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do |example|
-    if example.metadata[:type] == :system || example.metadata[:run_webpack]
-      # type: :system 時の初回だけ yarn build:dev を走らせる
-      # 静的な画像URLなどを返すために :run_webpack でも build:dev しなければならないケースがある
-      if !ENV["NO_WEBPACK"] && !File.exist?(Rails.root.join("spec", "webpack_build").to_s)
-        Kernel.system("yarn", "build:dev")
-        Kernel.system("touch #{Rails.root.join("spec", "webpack_build").to_s}")
-      end
-    end
-
     if example.metadata[:type] == :system
+      # type: :system 時の初回だけ yarn build:dev を走らせる
+      unless File.exist?(Rails.root.join("spec", "webpack_build"))
+        Kernel.system("yarn", "build:dev")
+        Kernel.system("touch #{Rails.root.join("spec", "webpack_build")}")
+      end
+
       if example.metadata[:js]
         driven_by :selenium, using: :headless_chrome, screen_size: [1280, 800], options: {
           args: [
