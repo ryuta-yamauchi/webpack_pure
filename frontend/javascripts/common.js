@@ -1,0 +1,3 @@
+testAlert = function() {
+  alert("hogehoge");
+};

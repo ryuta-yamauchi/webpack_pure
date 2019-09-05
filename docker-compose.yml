@@ -1,0 +1,52 @@
+version: "3.3"
+
+version: "3.3"
+
+services:
+  railsdb:
+    image: mysql:8.0.4
+    command: mysqld --default-authentication-plugin=mysql_native_password --secure-file-priv=NULL --character-set-server=utf8mb4 --collation-server=utf8mb4_bin
+    volumes:
+      - rails-mysql8-data:/var/lib/mysql
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_USER=root
+      - TZ=/usr/share/zoneinfo/Asia/Tokyo
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_ROOT_PASSWORD=password
+
+  railsweb:
+    build: .
+    image: webpack_pure_railsweb
+    command: /bin/bash -c 'rm -rf tmp/pids/server.pid && bundle exec rails s -b 0.0.0.0 -p 3000'
+    volumes:
+      - .:/webpack_pure
+    ports:
+      - "1234:1234"
+      - "26162:26162"
+      - "3000:3000"
+
+    environment:
+      - DB_HOST=railsdb
+    depends_on:
+      - railsdb
+      - railswebpack
+
+    stdin_open: true
+    tty: true
+    privileged: true
+
+  railswebpack:
+    image: webpack_pure_railsweb:latest
+    command: yarn webpack-dev-server --progress --color --config ./webpack.config.js
+    volumes:
+      - .:/webpack_pure
+    stdin_open: true
+    tty: true
+    ports:
+      - "3035:3035"
+
+volumes:
+  rails-mysql8-data:

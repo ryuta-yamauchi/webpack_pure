@@ -1,0 +1,16 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password: password
+
+development:
+  <<: *default
+  host: <%= ENV.fetch("DB_HOST") {'localhost'} %>
+  database: webpack_pure_development
+
+test:
+  <<: *default
+  host: <%= ENV.fetch("DB_HOST") {'localhost'} %>
+  database: webpack_pure_development

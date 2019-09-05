@@ -1,0 +1,12 @@
+doctype html
+html
+  head
+    title
+      | Webpack Pure
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_bundle_tag "application", media: "all"
+    = javascript_bundle_tag "application"
+
+  body
+    = yield
