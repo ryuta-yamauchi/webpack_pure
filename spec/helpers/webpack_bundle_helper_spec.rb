@@ -1,3 +1,4 @@
+# frozen_string_literal: true
 
 require "rails_helper"
 require "webmock/rspec"
@@ -55,7 +56,7 @@ RSpec.describe WebpackBundleHelper, type: :helper do
       subject { javascript_bundle_tag("application") }
 
       it "should render <script> tag" do
-        is_expected.to eq(%Q(<script src="/assets/js/application-824dbdf73f00e24d25b3.js" defer="defer"></script>))
+        is_expected.to eq('<script src="/assets/js/application-824dbdf73f00e24d25b3.js" defer="defer"></script>')
       end
     end
 
@@ -63,7 +64,7 @@ RSpec.describe WebpackBundleHelper, type: :helper do
       subject { javascript_bundle_tag("application", async: true) }
 
       it "should render <script> tag" do
-        is_expected.to eq(%Q(<script src="/assets/js/application-824dbdf73f00e24d25b3.js" async="async"></script>))
+        is_expected.to eq('<script src="/assets/js/application-824dbdf73f00e24d25b3.js" async="async"></script>')
       end
     end
 
@@ -81,7 +82,7 @@ RSpec.describe WebpackBundleHelper, type: :helper do
       subject { stylesheet_bundle_tag("application") }
 
       it "should render <link> tag" do
-        is_expected.to eq(%Q(<link rel="stylesheet" media="screen" href="/assets/stylesheets/application-824dbdf73f00e24d25b3.css" />))
+        is_expected.to eq('<link rel="stylesheet" media="screen" href="/assets/stylesheets/application-824dbdf73f00e24d25b3.css" />')
       end
     end
 
@@ -99,7 +100,7 @@ RSpec.describe WebpackBundleHelper, type: :helper do
       subject { image_bundle_tag("images/ruby.jpg") }
 
       it "should render <img> tag" do
-        is_expected.to eq(%Q(<img src="/assets/images/ruby-7c507c9018e4b6f1ec0d69adf64145de.jpg" />))
+        is_expected.to eq('<img src="/assets/images/ruby-7c507c9018e4b6f1ec0d69adf64145de.jpg" />')
       end
     end
 
