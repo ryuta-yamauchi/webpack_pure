@@ -128,7 +128,7 @@ module.exports = (env, argv) => {
       host: "0.0.0.0",
       hot: true,
       contentBase: assets_path,
-      inline: false,
+      inline: true,
       useLocalIp: false,
       public: "0.0.0.0:3035",
       publicPath: "/assets/",

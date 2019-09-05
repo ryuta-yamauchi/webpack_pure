@@ -1,3 +1,3 @@
 testAlert = function() {
-  alert("hogehoge");
+  alert("これはテストです");
 };

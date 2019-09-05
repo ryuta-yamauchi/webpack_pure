@@ -7,3 +7,6 @@ Rails version: 6.0.0
 ## 開発環境セットアップ
 $ docker-compose build
 $ docker-compose up
+
+## ブログ
+http://ponpoko-nalplus.hatenablog.com/
