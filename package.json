@@ -6,7 +6,7 @@
     "@rails/actiontext": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "import-glob-loader": "^1.1.0",
     "moment": "^2.24.0",
     "trix": "^1.0.0",
