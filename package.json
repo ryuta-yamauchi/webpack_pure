@@ -8,7 +8,7 @@
     "@rails/ujs": "^6.0.0",
     "axios": "^0.18.0",
     "import-glob-loader": "^1.1.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "trix": "^1.0.0",
     "vue": "^2.6.8",
     "vue-loader": "^15.7.0",
